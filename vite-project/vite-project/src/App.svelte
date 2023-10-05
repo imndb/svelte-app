@@ -1,5 +1,6 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
+  import background_foto from './assets/background.jpg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
 </script>
@@ -44,4 +45,7 @@
   .read-the-docs {
     color: #888;
   }
+   :global(body){
+     background-image: url("assets/background.jpg");
+   }
 </style>
