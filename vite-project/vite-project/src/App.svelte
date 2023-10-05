@@ -1,28 +1,45 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
+  import svelteLogo from './assets/iss.png'
   import background_foto from './assets/background.jpg'
-  import viteLogo from '/vite.svg'
+  import viteLogo from './assets/tiangong.png'
   import Counter from './lib/Counter.svelte'
+  import {peopleStore} from "./stores.js";
+  let people1
+  peopleStore.subscribe(people => people1 = people.people1)
+  let people2
+  peopleStore.subscribe(people => people2 = people.people2)
+
 </script>
 
 <main>
+  <div class="space-stations">
+
   <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+    <img src={viteLogo} class="logo" alt="Vite Logo"/>
+    <div>
+      {#each people1 as person}
+        <p>{person}</p>
+      {/each}
+    </div>
   </div>
-  <h1>Vite + Svelte</h1>
+  <div>
+    <img src={svelteLogo} class="logo svelte" alt="Svelte Logo"/>
+    <div>
+      {#each people2 as person}
+        <p>{person}</p>
+      {/each}
+    </div>
+  </div>
+
+  </div>
 
   <div class="card">
     <Counter />
   </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+
+
+
 
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more
@@ -30,6 +47,10 @@
 </main>
 
 <style>
+  .space-stations {
+    display: flex;
+  }
+
   .logo {
     height: 6em;
     padding: 1.5em;
